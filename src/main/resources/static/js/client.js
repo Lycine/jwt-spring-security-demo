@@ -163,6 +163,39 @@ $(function () {
         });
     });
 
+    $("#getKaptchaImage").click(function () {
+        $.ajax({
+            url: "/getKaptchaImage",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "text",
+            headers: createAuthorizationTokenHeader(),
+            success: function (data, textStatus, jqXHR) {
+                $('pre').after(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                showResponse(jqXHR.status, errorThrown);
+            }
+        });
+    });
+
+    $("#verifyKaptchaImage").click(function () {
+        var code = $("#capText").val();
+        $.ajax({
+            url: "/verifyKaptchaImage/"+code,
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "text",
+            headers: createAuthorizationTokenHeader(),
+            success: function (data, textStatus, jqXHR) {
+                showResponse(jqXHR.status, data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                showResponse(jqXHR.status, errorThrown);
+            }
+        });
+    });
+
     $("#adminServiceBtn").click(function () {
         $.ajax({
             url: "/protected",

@@ -21,6 +21,32 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
+  kaptcha:
+    properties:
+      kaptcha:
+        border: no
+        image:
+          width: 80
+          height: 35
+        background:
+          clear:
+            from: white
+            to: white
+        session:
+          key: code
+        noise:
+          color: white
+        textproducer:
+          char:
+            string: 0123456789ABCDEFGHIJKLMNPQRSTUVWXYZ
+            length: 4
+          font:
+            names: Tahoma
+            size: 30
+            color: blue
+        obscurificator:
+          impl: com.google.code.kaptcha.impl.WaterRipple
+
 jwt:
   header: Authorization
   secret: mySecret
@@ -29,6 +55,7 @@ jwt:
     authentication:
       path: auth
       refresh: refresh
+
 
 #logging:
 #  level:
