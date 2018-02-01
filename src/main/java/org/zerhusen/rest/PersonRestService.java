@@ -93,15 +93,16 @@ public class PersonRestService {
     public DefaultKaptcha captchaProducer(){
         DefaultKaptcha captchaProducer =new DefaultKaptcha();
         Properties properties =new Properties();
-        properties.setProperty("kaptcha.border","yes");
+        properties.setProperty("kaptcha.border","no");
         properties.setProperty("kaptcha.border.color","105,179,90");
-        properties.setProperty("kaptcha.textproducer.font.color","51,153,255");
+
+        properties.setProperty("kaptcha.textproducer.font.color","46,146,247");
         properties.setProperty("kaptcha.image.width","180");
         properties.setProperty("kaptcha.image.height","50");
         properties.setProperty("kaptcha.textproducer.char.space","3");
 
-        properties.setProperty("kaptcha.noise.color","51,102,255");
-
+//        properties.setProperty("kaptcha.noise.color","51,102,255");
+        properties.setProperty("kaptcha.noise.color","46,146,247");
         properties.setProperty("kaptcha.textproducer.font.size","40");
         properties.setProperty("kaptcha.session.key","code");
         properties.setProperty("kaptcha.textproducer.char.length","4");
@@ -109,6 +110,11 @@ public class PersonRestService {
         properties.setProperty("kaptcha.textproducer.font.names","Tahoma");
         properties.setProperty("kaptcha.obscurificator.impl","com.google.code.kaptcha.impl.WaterRipple");
         properties.setProperty("kaptcha.textproducer.char.string","abcdefghkmnprstuvwxyABCEFGHKMNPRSTUVWXY1345678");
+        properties.setProperty("kaptcha.background.clear.from","white");
+        properties.setProperty("kaptcha.background.clear.to","white");
+
+
+
         Config config=new Config(properties);
         captchaProducer.setConfig(config);
         return  captchaProducer;
