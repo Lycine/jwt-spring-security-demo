@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Full Layout - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/ams/ams.css">
+    <link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/jquery-easyui-1.5.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery-easyui-1.5.4.4/jquery.easyui.min.js"></script>
+    <style>
+        .e-icon {
+            padding-top: 3px;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'north',border:false,minHeight:50,maxHeight:50" style="padding:5px">
+    <div style="line-height:35px;height:35px;">
+        <div style="float: left;">
+            <img src="/images/ittac-logo-301.png"><span style="font-size: 25px;font-weight: 500">ITTAC作业系统</span>
+        </div>
+        <div style="float: right;">
+            <a href="#" class="easyui-linkbutton" data-options="" style="height:30px;width:100px"><i
+                class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+        </div>
+    </div>
+</div>
+<div data-options="region:'west',split:true,title:' '" style="width:150px;padding:10px;">
+
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-home fa-fw',size:'',iconAlign:'left'">我的主页</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-home fa-fw',size:'',iconAlign:'left'">学生主页</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-sitemap fa-fw',size:'',iconAlign:'left'">作业发布</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-calendar fa-fw',size:'',iconAlign:'left'">作业日历</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-book fa-fw',size:'',iconAlign:'left'">作业管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-archive fa-fw',size:'',iconAlign:'left'">作业条目管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-users fa-fw',size:'',iconAlign:'left'">用户管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-gear fa-fw',size:'',iconAlign:'left'">系统配置</a>
+
+</div>
+<!--<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>-->
+<!--<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>-->
+<div data-options="region:'center',title:''"></div>
+<script>
+
+</script>
+<script src="/js/libs/jwt-decode.min.js"></script>
+<script src="/js/client.js"></script>
+</body>
+</html>

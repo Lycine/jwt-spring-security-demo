@@ -70,3 +70,7 @@ jwt:
 
 logging:
   config: classpath:logback.xml
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  type-aliases-package: org.jozif.po

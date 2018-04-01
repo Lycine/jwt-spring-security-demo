@@ -68,7 +68,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/favicon.ico",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js"
+                        "/**/*.js",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/font-awesome-4.7.0/**"
                 ).permitAll()
 
                 // Un-secure H2 Database

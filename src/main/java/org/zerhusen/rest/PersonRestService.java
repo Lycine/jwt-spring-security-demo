@@ -27,8 +27,6 @@ import java.util.Properties;
 public class PersonRestService {
     private static final List<Person> persons;
 
-    @Autowired
-    private Producer captchaProducer;
 
     static {
         persons = new ArrayList<>();
@@ -48,75 +46,5 @@ public class PersonRestService {
                 .findAny().orElse(null);
     }
 
-    @RequestMapping(value = "/getKaptchaImage", method = RequestMethod.GET)
-    public String getKaptchaImage(HttpServletRequest request) throws Exception {
-        HttpSession session = request.getSession();
-        String capText = captchaProducer.createText();
-        session.setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
 
-        System.out.println("capText: " + capText);
-        BufferedImage bi = captchaProducer.createImage(capText);
-        String imageInBase64 = getImageBinary(bi);
-        System.out.println("imageInBase64: " + imageInBase64);
-        String imgTag = "<img src=\"data:image/png;base64," + imageInBase64 + "\"/>";
-        return imgTag;
-    }
-
-    @RequestMapping(value = "/verifyKaptchaImage/{incomeCapText}", method = RequestMethod.GET)
-    public String verifyKaptcha(HttpServletRequest request, @PathVariable("incomeCapText")String incomeCapText) throws Exception {
-        HttpSession session = request.getSession();
-        String realCapText = (String)session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
-        System.out.println("realCapText: " + realCapText);
-        System.out.println("incomeCapText: " + incomeCapText);
-        if (StringUtils.equalsIgnoreCase(realCapText,incomeCapText)){
-            return "true";
-        } else {
-            return "false";
-        }
-    }
-
-
-    static String getImageBinary(BufferedImage bi) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "jpg", baos);
-            byte[] bytes = baos.toByteArray();
-            byte[] enbytes = Base64.encodeBase64Chunked(bytes);
-            return new String(enbytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Bean
-    public DefaultKaptcha captchaProducer(){
-        DefaultKaptcha captchaProducer =new DefaultKaptcha();
-        Properties properties =new Properties();
-        properties.setProperty("kaptcha.border","no");
-        properties.setProperty("kaptcha.border.color","105,179,90");
-
-        properties.setProperty("kaptcha.textproducer.font.color","46,146,247");
-        properties.setProperty("kaptcha.image.width","180");
-        properties.setProperty("kaptcha.image.height","50");
-        properties.setProperty("kaptcha.textproducer.char.space","3");
-
-//        properties.setProperty("kaptcha.noise.color","51,102,255");
-        properties.setProperty("kaptcha.noise.color","46,146,247");
-        properties.setProperty("kaptcha.textproducer.font.size","40");
-        properties.setProperty("kaptcha.session.key","code");
-        properties.setProperty("kaptcha.textproducer.char.length","4");
-//        properties.setProperty("kaptcha.textproducer.font.names","宋体,楷体,微软雅黑");
-        properties.setProperty("kaptcha.textproducer.font.names","Tahoma");
-        properties.setProperty("kaptcha.obscurificator.impl","com.google.code.kaptcha.impl.WaterRipple");
-        properties.setProperty("kaptcha.textproducer.char.string","abcdefghkmnprstuvwxyABCEFGHKMNPRSTUVWXY1345678");
-        properties.setProperty("kaptcha.background.clear.from","white");
-        properties.setProperty("kaptcha.background.clear.to","white");
-
-
-
-        Config config=new Config(properties);
-        captchaProducer.setConfig(config);
-        return  captchaProducer;
-    }
 }

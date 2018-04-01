@@ -165,7 +165,7 @@ $(function () {
 
     $("#getKaptchaImage").click(function () {
         $.ajax({
-            url: "/getKaptchaImage",
+            url: "/persons/getKaptchaImage",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "text",
@@ -182,7 +182,7 @@ $(function () {
     $("#verifyKaptchaImage").click(function () {
         var code = $("#capText").val();
         $.ajax({
-            url: "/verifyKaptchaImage/"+code,
+            url: "/persons/verifyKaptchaImage/"+code,
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "text",
