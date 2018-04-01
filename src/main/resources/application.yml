@@ -67,3 +67,6 @@ jwt:
 #  level:
 #    org.springframework:
 #      security: DEBUG
+
+logging:
+  config: classpath:logback.xml
