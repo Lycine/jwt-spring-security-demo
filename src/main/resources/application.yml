@@ -12,14 +12,20 @@ spring:
     console:
       enabled: true
 
-  datasource:
-    url: jdbc:h2:~/test;DB_CLOSE_ON_EXIT=FALSE
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+#  datasource:
+#    url: jdbc:h2:~/test;DB_CLOSE_ON_EXIT=FALSE
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
 
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:mysql://localhost/jwt
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
 
   kaptcha:
     properties:

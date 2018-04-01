@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -150,6 +151,13 @@ public class JwtTokenUtilTest {
         device.setNormal(true);
 
         return jwtTokenUtil.generateToken(new UserDetailsDummy(TEST_USERNAME), device);
+    }
+
+    @Test
+    public void generateEncodedPasswordInBcrypt() {
+        String rawPassword = "admin";
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        System.out.println(bCryptPasswordEncoder.encode(rawPassword));
     }
 
 }
