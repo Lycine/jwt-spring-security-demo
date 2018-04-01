@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Full Layout - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/jquery-easyui-1.5.4.4/ams/ams.css">
+    <link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/jquery-easyui-1.5.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/jquery-easyui-1.5.4.4/jquery.easyui.min.js"></script>
+    <!--<script src="/echart-4.0.4/echarts.simple.min.js"></script>-->
+    <script src="/echart-4.0.4/echarts.common.min.js"></script>
+    <style>
+        .e-icon {
+            padding-top: 3px;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+<div data-options="region:'north',border:false,minHeight:50,maxHeight:50" style="padding:5px">
+    <div style="line-height:35px;height:35px;">
+        <div style="float: left;">
+            <img src="/images/ittac-logo-301.png"><span style="font-size: 25px;font-weight: 500">ITTAC作业系统</span>
+        </div>
+        <div style="float: right;">
+            <a href="#" class="easyui-linkbutton" data-options="" style="height:30px;width:100px"><i
+                    class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+        </div>
+    </div>
+</div>
+<div data-options="region:'west',split:true,title:' '" style="width:150px;padding:10px;">
+
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-home fa-fw',size:'',iconAlign:'left'">我的主页</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-home fa-fw',size:'',iconAlign:'left'">学生主页</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-sitemap fa-fw',size:'',iconAlign:'left'">作业发布</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-calendar fa-fw',size:'',iconAlign:'left'">作业日历</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-book fa-fw',size:'',iconAlign:'left'">作业管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-archive fa-fw',size:'',iconAlign:'left'">作业条目管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-users fa-fw',size:'',iconAlign:'left'">用户管理</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" style="text-align: left;width:100%;margin-bottom: 5px"
+       data-options="iconCls:'e-icon fa fa-gear fa-fw',size:'',iconAlign:'left'">系统配置</a>
+
+</div>
+<!--<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>-->
+<!--<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>-->
+<div data-options="region:'center',title:''" >
+    <div style="float:left;padding: 5px 5px">
+        <div id="p" class="easyui-panel" title="公告栏" style="text-align:left;width:100%;max-width:550px;padding: 10px">
+            <p><span style="font-size: 40px">以下内容很重要！！！</span></p>
+            <p>新学期 新作业系统 新助教跟踪体系 新面貌完成新作业 加油！！！</p>
+        </div>
+        <div style="margin-top: 10px"></div>
+
+        <div class="easyui-panel" title="更多操作" style="text-align:left;width:100%;max-width:550px;padding:10px">
+
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="size:'large'" onclick="submitForm()" style="width:160px;margin: 5px">手动删除云盘文件</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="size:'large'" onclick="submitForm()" style="width:160px;margin: 5px">手动删除云盘文件</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="size:'large'" onclick="submitForm()" style="width:160px;margin: 5px">手动删除云盘文件</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="size:'large'" onclick="submitForm()" style="width:160px;margin: 5px">手动删除云盘文件</a>
+        </div>
+        <div style="margin-top: 10px"></div>
+
+        <div class="easyui-panel" title="我的信息" style="width:100%;max-width:550px;padding:30px 60px;">
+            <form id="ff" method="post">
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="name" style="width:100%;max-width:300px;" data-options="label:'姓名:',required:true">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="name" style="width:100%;max-width:300px;" data-options="label:'微信号:',required:true">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" name="email" style="width:100%;max-width:300px;" data-options="label:'邮箱:',required:true,validType:'email'">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-textbox" value="123" name="email" style="width:100%;max-width:300px;" data-options="label:'手机号:',required:true,validType:'email',disabled:'true'">
+                </div>
+            </form>
+            <div style="text-align:left;max-width:300px;padding:5px 0">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px;">保存</a>
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="easyui-panel" title="修改密码" style="width:100%;max-width:550px;padding:30px 60px;">
+            <form id="ff1" method="post">
+                <div style="margin-bottom:20px">
+                    <input class="easyui-passwordbox" prompt="Password" iconWidth="28" style="width:100%;height:34px;padding:10px" data-options="label:'旧密码:',required:true">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-passwordbox" prompt="Password" iconWidth="28" style="width:100%;height:34px;padding:10px" data-options="label:'新密码:',required:true">
+                </div>
+                <div style="margin-bottom:20px">
+                    <input class="easyui-passwordbox" prompt="Password" iconWidth="28" style="width:100%;height:34px;padding:10px" data-options="label:'重复密码:',required:true">
+                </div>
+            </form>
+            <div style="text-align:left;max-width:300px;padding:5px 0">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px;">保存</a>
+            </div>
+        </div>
+    </div>
+    <div style="float:left;padding: 5px 5px">
+        <div id="p1" class="easyui-panel" title="统计" style="text-align:left;width:100%;max-width:550px;padding: 10px">
+            <div id="main" style="width: 500px;height:500px;"></div>
+        </div>
+    </div>
+    <div style="float:left;padding: 5px 5px">
+        <div id="p2" class="easyui-panel" title="统计" style="text-align:left;width:100%;max-width:550px;padding: 10px">
+            <div id="main2" style="width: 500px;height:500px;"></div>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        },
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 234, name: '联盟广告'},
+                    {value: 135, name: '视频广告'},
+                    {value: 1548, name: '搜索引擎'}
+                ]
+            }
+        ]
+    };
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart2 = echarts.init(document.getElementById('main2'));
+
+    // 指定图表的配置项和数据
+    var option2 = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    };
+
+    myChart2.setOption(option2);
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+<script src="/js/libs/jwt-decode.min.js"></script>
+<script src="/js/client.js"></script>
+</body>
+</html>

@@ -42,4 +42,15 @@ public class UserController {
 //        return "/jquery-easyui-1.5.4.4/ams/nav.html";
         return "/jquery-easyui-1.5.4.4/ams/nav.html";
     }
+
+    @RequestMapping(value = "/auth/home", method = RequestMethod.GET)
+    public Object toHome() {
+        User user = userService.userFindAll();
+        Map<String, String> result = new HashMap<>();
+        result.put("email", user.getEmail());
+        result.put("password", user.getPassword());
+        user.getEmail();
+//        return "/jquery-easyui-1.5.4.4/ams/nav.html";
+        return "/jquery-easyui-1.5.4.4/ams/home.html";
+    }
 }
